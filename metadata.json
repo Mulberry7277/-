@@ -1,0 +1,6 @@
+{
+  "name": "Chirpy Blog",
+  "description": "A responsive, feature-rich personal blog inspired by Jekyll Theme Chirpy with dark mode, markdown rendering, TOC, search, categories, tags, and archives.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
