@@ -34,13 +34,13 @@ export const CategoriesView: React.FC = () => {
             <button
               onClick={() => setFilterCategory(null)}
               className="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 dark:hover:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
-              title="Back to all categories"
+              title="返回所有分类"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
-                Category
+                分类专栏
               </span>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-zinc-100">
                 {filterCategory}
@@ -48,7 +48,7 @@ export const CategoriesView: React.FC = () => {
             </div>
           </div>
           <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 font-mono">
-            {matchedPosts.length} posts
+            {matchedPosts.length} 篇文章
           </span>
         </div>
 
@@ -82,10 +82,10 @@ export const CategoriesView: React.FC = () => {
     <div className="bg-white dark:bg-[#212124] border border-slate-200/80 dark:border-zinc-800 rounded-xl p-6 sm:p-8">
       <div className="mb-6 pb-4 border-b border-slate-200 dark:border-zinc-800">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-zinc-100 tracking-tight">
-          Categories ({categories.length})
+          分类目录 ({categories.length})
         </h2>
         <p className="text-xs text-slate-500 dark:text-zinc-400 mt-1">
-          Explore articles categorized by domain and topic
+          按技术领域与主题探索博客文章
         </p>
       </div>
 

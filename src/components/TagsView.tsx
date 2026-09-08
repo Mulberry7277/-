@@ -27,13 +27,13 @@ export const TagsView: React.FC = () => {
             <button
               onClick={() => setFilterTag(null)}
               className="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 dark:hover:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
-              title="Back to all tags"
+              title="返回所有标签"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
-                Tag Filter
+                标签筛选
               </span>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-zinc-100">
                 #{filterTag}
@@ -41,7 +41,7 @@ export const TagsView: React.FC = () => {
             </div>
           </div>
           <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 font-mono">
-            {matchedPosts.length} posts
+            {matchedPosts.length} 篇文章
           </span>
         </div>
 
@@ -75,10 +75,10 @@ export const TagsView: React.FC = () => {
     <div className="bg-white dark:bg-[#212124] border border-slate-200/80 dark:border-zinc-800 rounded-xl p-6 sm:p-8">
       <div className="mb-6 pb-4 border-b border-slate-200 dark:border-zinc-800">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-zinc-100 tracking-tight">
-          Tags Cloud ({tags.length})
+          标签云 ({tags.length})
         </h2>
         <p className="text-xs text-slate-500 dark:text-zinc-400 mt-1">
-          Click any tag to view corresponding technical write-ups
+          点击任意标签查看对应主题的技术博文
         </p>
       </div>
 

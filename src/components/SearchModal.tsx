@@ -54,7 +54,7 @@ export const SearchModal: React.FC = () => {
             id="search-modal-input"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="Search articles by title, content, tags, or categories..."
+            placeholder="搜索文章标题、正文、分类或标签..."
             className="flex-1 bg-transparent text-sm sm:text-base text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 dark:placeholder:text-zinc-500 focus:outline-none"
           />
           {query && (
@@ -66,7 +66,7 @@ export const SearchModal: React.FC = () => {
             </button>
           )}
           <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono text-slate-400 dark:text-zinc-500 bg-slate-100 dark:bg-zinc-800 rounded border border-slate-200 dark:border-zinc-700">
-            ESC to close
+            ESC 键关闭
           </kbd>
         </div>
 
@@ -75,22 +75,22 @@ export const SearchModal: React.FC = () => {
           {!trimmed ? (
             <div className="py-12 text-center text-slate-500 dark:text-zinc-400">
               <FileText className="w-8 h-8 mx-auto mb-2 text-slate-400 dark:text-zinc-600" />
-              <p className="text-sm font-medium">Type keywords to search posts</p>
+              <p className="text-sm font-medium">输入关键词搜索文章</p>
               <p className="text-xs text-slate-400 dark:text-zinc-500 mt-1">
-                Supports searching by title, markdown content, category, or #tags
+                支持检索文章标题、正文 Markdown 内容、分类目录与 #标签
               </p>
             </div>
           ) : filteredPosts.length === 0 ? (
             <div className="py-12 text-center text-slate-500 dark:text-zinc-400">
-              <p className="text-sm font-medium">No results found for "{query}"</p>
+              <p className="text-sm font-medium">未找到与 &ldquo;{query}&rdquo; 相关的文章</p>
               <p className="text-xs text-slate-400 dark:text-zinc-500 mt-1">
-                Try searching with different keywords
+                请尝试更换关键词后重试
               </p>
             </div>
           ) : (
             <div className="space-y-1">
-              <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-zinc-500">
-                Found {filteredPosts.length} article{filteredPosts.length > 1 ? 's' : ''}
+              <div className="px-3 py-1.5 text-[11px] font-semibold tracking-wider text-slate-400 dark:text-zinc-500">
+                共检索到 {filteredPosts.length} 篇文章
               </div>
               {filteredPosts.map(post => (
                 <div

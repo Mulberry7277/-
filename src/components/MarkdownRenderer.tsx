@@ -144,7 +144,7 @@ function generateHeadingId(children: React.ReactNode): string {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, '')
+    .replace(/[^\w\s\u4e00-\u9fa5-]/g, '')
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
@@ -204,28 +204,28 @@ const CalloutBlock: React.FC<{ children: React.ReactNode }> = ({ children }) => 
       bg: 'bg-blue-50/70 dark:bg-blue-950/25',
       text: 'text-blue-900 dark:text-blue-300',
       icon: <Info className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />,
-      title: 'NOTE',
+      title: '提示 (NOTE)',
     },
     tip: {
       border: 'border-l-4 border-emerald-500',
       bg: 'bg-emerald-50/70 dark:bg-emerald-950/25',
       text: 'text-emerald-900 dark:text-emerald-300',
       icon: <Sparkles className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />,
-      title: 'TIP',
+      title: '技巧 (TIP)',
     },
     warning: {
       border: 'border-l-4 border-amber-500',
       bg: 'bg-amber-50/70 dark:bg-amber-950/25',
       text: 'text-amber-900 dark:text-amber-300',
       icon: <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />,
-      title: 'WARNING',
+      title: '警告 (WARNING)',
     },
     danger: {
       border: 'border-l-4 border-rose-500',
       bg: 'bg-rose-50/70 dark:bg-rose-950/25',
       text: 'text-rose-900 dark:text-rose-300',
       icon: <AlertCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />,
-      title: 'DANGER',
+      title: '危险 (DANGER)',
     },
     default: {
       border: 'border-l-4 border-slate-300 dark:border-zinc-700',
@@ -286,17 +286,17 @@ const CodeBlock: React.FC<{ code: string; language: string }> = ({ code, languag
           id={`copy-btn-${language}`}
           onClick={handleCopy}
           className="flex items-center gap-1.5 px-2 py-1 rounded bg-zinc-800/60 hover:bg-zinc-700 text-zinc-300 hover:text-white transition-colors text-xs cursor-pointer"
-          title="Copy to clipboard"
+          title="复制到剪贴板"
         >
           {copied ? (
             <>
               <Check className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400">Copied!</span>
+              <span className="text-emerald-400">已复制!</span>
             </>
           ) : (
             <>
               <Copy className="w-3.5 h-3.5" />
-              <span>Copy</span>
+              <span>复制代码</span>
             </>
           )}
         </button>

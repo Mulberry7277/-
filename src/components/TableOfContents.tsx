@@ -37,7 +37,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => 
         const id = text
           .toLowerCase()
           .trim()
-          .replace(/[^\w\s-]/g, '')
+          .replace(/[^\w\s\u4e00-\u9fa5-]/g, '')
           .replace(/[\s_-]+/g, '-')
           .replace(/^-+|-+$/g, '');
 
@@ -101,7 +101,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => 
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-zinc-400 mb-3 pb-1 border-b border-slate-200 dark:border-zinc-800">
               <ListTree className="w-3.5 h-3.5 text-cyan-500" />
-              <span>Contents</span>
+              <span>文章目录</span>
             </div>
             <nav className="space-y-1 text-sm">
               {headings.map(item => {
@@ -133,7 +133,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => 
           <div className="pt-2">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-zinc-400 mb-3 pb-1 border-b border-slate-200 dark:border-zinc-800">
               <TrendingUp className="w-3.5 h-3.5 text-amber-500" />
-              <span>Trending Posts</span>
+              <span>近期热门</span>
             </div>
             <div className="space-y-3">
               {recentPosts.map(post => (
@@ -150,7 +150,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => 
                     <Clock className="w-3 h-3" />
                     <span>{post.date}</span>
                     <span>•</span>
-                    <span>{post.readingTime || 5} min</span>
+                    <span>{post.readingTime || 5} 分钟</span>
                   </div>
                 </div>
               ))}

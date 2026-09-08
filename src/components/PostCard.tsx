@@ -17,9 +17,9 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
     >
       {/* Pinned Badge */}
       {post.pin && (
-        <div className="flex items-center gap-1 text-[11px] font-semibold text-amber-500 mb-2 uppercase tracking-wider">
+        <div className="flex items-center gap-1 text-[11px] font-semibold text-amber-500 mb-2 tracking-wider">
           <Pin className="w-3.5 h-3.5 fill-amber-500/20 rotate-45" />
-          <span>Pinned Post</span>
+          <span>置顶推荐</span>
         </div>
       )}
 
@@ -64,14 +64,14 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
         {/* Reading Time */}
         <div className="flex items-center gap-1.5">
           <Clock className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-500" />
-          <span>{post.readingTime || 5} min read</span>
+          <span>{post.readingTime || 5} 分钟阅读</span>
         </div>
 
         {/* Views */}
         {post.views !== undefined && (
           <div className="flex items-center gap-1.5">
             <Eye className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-500" />
-            <span>{post.views} views</span>
+            <span>{post.views} 次浏览</span>
           </div>
         )}
 

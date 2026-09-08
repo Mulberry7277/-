@@ -67,7 +67,7 @@ function BlogMainContent() {
           <div className="flex items-center gap-2">
             <Filter className="w-3.5 h-3.5 text-cyan-500" />
             <span>
-              Filtering by {filterCategory ? `category "${filterCategory}"` : `tag "#${filterTag}"`}
+              正在筛选{filterCategory ? `分类 “${filterCategory}”` : `标签 “#${filterTag}”`} 下的文章
             </span>
           </div>
           <button
@@ -78,7 +78,7 @@ function BlogMainContent() {
             className="flex items-center gap-1 px-2 py-0.5 rounded hover:bg-cyan-500/20 transition-colors font-semibold cursor-pointer"
           >
             <X className="w-3.5 h-3.5" />
-            <span>Clear Filter</span>
+            <span>清除筛选</span>
           </button>
         </div>
       )}
@@ -87,7 +87,7 @@ function BlogMainContent() {
       {sortedPosts.length === 0 ? (
         <div className="p-12 text-center bg-white dark:bg-[#212124] border border-slate-200 dark:border-zinc-800 rounded-xl">
           <p className="text-sm font-semibold text-slate-700 dark:text-zinc-300">
-            No articles match your current filter.
+            暂无符合当前筛选条件的文章
           </p>
           <button
             onClick={() => {
@@ -96,7 +96,7 @@ function BlogMainContent() {
             }}
             className="mt-3 text-xs text-cyan-600 dark:text-cyan-400 hover:underline cursor-pointer"
           >
-            Show all articles
+            查看所有文章
           </button>
         </div>
       ) : (
@@ -136,10 +136,10 @@ function BlogApp() {
               <span className="font-semibold text-slate-700 dark:text-zinc-300">
                 {profile.name}
               </span>
-              . Some rights reserved.
+              . 保留部分权利 (Some rights reserved).
             </p>
             <p className="flex items-center gap-1">
-              <span>Powered by</span>
+              <span>基于</span>
               <a
                 href="https://github.com/cotes2020/jekyll-theme-chirpy"
                 target="_blank"
@@ -149,7 +149,7 @@ function BlogApp() {
                 Jekyll Chirpy
                 <ExternalLink className="w-2.5 h-2.5" />
               </a>
-              <span>& React 19</span>
+              <span>风格与 React 19 构建</span>
             </p>
           </div>
         </footer>

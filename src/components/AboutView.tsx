@@ -20,10 +20,10 @@ export const AboutView: React.FC = () => {
   };
 
   const techStack = [
-    { category: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'SQL'] },
-    { category: 'Frontend', items: ['React 19', 'Tailwind CSS', 'Vite', 'Next.js', 'Jekyll', 'HTML5/CSS3'] },
-    { category: 'Systems & Cloud', items: ['Docker', 'Linux', 'GCP / Cloud Run', 'GitHub Actions', 'Edge Caching'] },
-    { category: 'AI & Tooling', items: ['Gemini API', 'Agent Architectures', 'Neovim', 'Git', 'Starship'] },
+    { category: '编程语言', items: ['TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'SQL'] },
+    { category: '前端与框架', items: ['React 19', 'Tailwind CSS', 'Vite', 'Next.js', 'Jekyll', 'HTML5/CSS3'] },
+    { category: '系统与云原生', items: ['Docker', 'Linux', 'GCP / Cloud Run', 'GitHub Actions', 'CDN 缓存'] },
+    { category: 'AI 与工程工具', items: ['Gemini API', 'Agent 架构', 'Neovim', 'Git', 'Starship'] },
   ];
 
   return (
@@ -59,7 +59,7 @@ export const AboutView: React.FC = () => {
               className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-zinc-700 bg-slate-50 dark:bg-zinc-800 text-xs font-semibold text-slate-700 dark:text-zinc-300 hover:border-cyan-500 transition-colors cursor-pointer self-center sm:self-start"
             >
               <Edit3 className="w-3.5 h-3.5" />
-              <span>{isEditing ? 'Cancel Edit' : 'Edit Profile'}</span>
+              <span>{isEditing ? '取消编辑' : '编辑个人资料'}</span>
             </button>
           </div>
 
@@ -105,12 +105,12 @@ export const AboutView: React.FC = () => {
       {isEditing && (
         <form onSubmit={handleSave} className="my-6 p-6 rounded-xl bg-slate-50 dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 space-y-4">
           <h3 className="text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-zinc-200 mb-2">
-            Update Author Profile
+            更新博主个人资料
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-semibold text-slate-600 dark:text-zinc-400 mb-1">
-                Display Name
+                显示昵称
               </label>
               <input
                 type="text"
@@ -123,7 +123,7 @@ export const AboutView: React.FC = () => {
             </div>
             <div>
               <label className="block text-xs font-semibold text-slate-600 dark:text-zinc-400 mb-1">
-                Headline / Title
+                头衔 / 岗位
               </label>
               <input
                 type="text"
@@ -135,7 +135,7 @@ export const AboutView: React.FC = () => {
             </div>
             <div>
               <label className="block text-xs font-semibold text-slate-600 dark:text-zinc-400 mb-1">
-                Avatar Image URL
+                头像图片 URL
               </label>
               <input
                 type="url"
@@ -147,7 +147,7 @@ export const AboutView: React.FC = () => {
             </div>
             <div>
               <label className="block text-xs font-semibold text-slate-600 dark:text-zinc-400 mb-1">
-                Location
+                所在城市
               </label>
               <input
                 type="text"
@@ -159,7 +159,7 @@ export const AboutView: React.FC = () => {
             </div>
             <div>
               <label className="block text-xs font-semibold text-slate-600 dark:text-zinc-400 mb-1">
-                Email
+                电子邮箱
               </label>
               <input
                 type="email"
@@ -171,7 +171,7 @@ export const AboutView: React.FC = () => {
             </div>
             <div>
               <label className="block text-xs font-semibold text-slate-600 dark:text-zinc-400 mb-1">
-                GitHub URL
+                GitHub 个人主页链接
               </label>
               <input
                 type="url"
@@ -184,7 +184,7 @@ export const AboutView: React.FC = () => {
           </div>
           <div>
             <label className="block text-xs font-semibold text-slate-600 dark:text-zinc-400 mb-1">
-              Biography
+              个人简介
             </label>
             <textarea
               id="edit-bio-input"
@@ -201,14 +201,14 @@ export const AboutView: React.FC = () => {
               onClick={() => setIsEditing(false)}
               className="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-zinc-700 text-xs text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 cursor-pointer"
             >
-              Cancel
+              取消
             </button>
             <button
               type="submit"
               id="save-profile-btn"
               className="px-4 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold cursor-pointer"
             >
-              Save Profile
+              保存修改
             </button>
           </div>
         </form>
@@ -217,7 +217,7 @@ export const AboutView: React.FC = () => {
       {saveSuccess && (
         <div className="my-4 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs flex items-center gap-2">
           <Check className="w-4 h-4 text-emerald-500" />
-          <span>Profile successfully updated and saved to local storage!</span>
+          <span>个人资料已成功更新并保存至本地存储！</span>
         </div>
       )}
 
@@ -226,10 +226,10 @@ export const AboutView: React.FC = () => {
         <div>
           <h3 className="text-lg font-bold text-slate-900 dark:text-zinc-100 mb-3 flex items-center gap-2">
             <Terminal className="w-4 h-4 text-cyan-500" />
-            <span>About This Blog</span>
+            <span>关于本博客</span>
           </h3>
           <p className="text-sm leading-relaxed text-slate-700 dark:text-zinc-300">
-            Welcome to my personal tech notebook! This site is inspired by the iconic{' '}
+            欢迎来到我的个人技术博客！本站点深度还原了知名的{' '}
             <a
               href="https://github.com/cotes2020/jekyll-theme-chirpy"
               target="_blank"
@@ -238,10 +238,10 @@ export const AboutView: React.FC = () => {
             >
               Jekyll Theme Chirpy
             </a>
-            , focusing on high readability, distraction-free typography, fast client-side navigation, and comprehensive technical documentation capabilities.
+            {' '}经典风格，注重清晰自然的排版设计、无干扰的高效阅读体验、极速响应的前端交互以及强大的 Markdown 写作支持。
           </p>
           <p className="text-sm leading-relaxed text-slate-700 dark:text-zinc-300 mt-2">
-            Here, I share practical guides, architectural insights, performance experiments, and reflections on distributed systems and software tooling.
+            在这里，我将持续分享系统工程、云原生架构、前端现代化探索、分布式组件与 AI 辅助开发等实战思考与学习笔记。
           </p>
         </div>
 
@@ -249,7 +249,7 @@ export const AboutView: React.FC = () => {
         <div>
           <h3 className="text-lg font-bold text-slate-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
             <Code2 className="w-4 h-4 text-cyan-500" />
-            <span>Technical Skills & Tools</span>
+            <span>技术栈与工具箱</span>
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {techStack.map(stack => (
@@ -279,26 +279,26 @@ export const AboutView: React.FC = () => {
         <div className="p-6 rounded-xl bg-cyan-50/50 dark:bg-cyan-950/20 border border-cyan-200/80 dark:border-cyan-800/40">
           <h4 className="text-sm font-bold text-cyan-900 dark:text-cyan-200 flex items-center gap-2 mb-2">
             <Sparkles className="w-4 h-4 text-cyan-500" />
-            <span>Key Chirpy Theme Highlights Enabled:</span>
+            <span>Chirpy 主题特色功能一览：</span>
           </h4>
           <ul className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 space-y-1.5 list-disc pl-5">
-            <li><strong>Dual Column Desktop Layout:</strong> Fixed sidebar navigation + main post stream + sticky table of contents.</li>
-            <li><strong>Jekyll Frontmatter Compatibility:</strong> Easily write and export standard Jekyll markdown files with YAML frontmatter.</li>
-            <li><strong>Chirpy Prompt Callouts:</strong> Support for <code className="text-xs font-mono">&gt; [!NOTE]</code>, <code className="text-xs font-mono">&gt; [!TIP]</code>, <code className="text-xs font-mono">&gt; [!WARNING]</code>, and <code className="text-xs font-mono">&gt; [!DANGER]</code>.</li>
-            <li><strong>Light & Dark Mode:</strong> Persistent color scheme toggle with high-contrast slate neutrals.</li>
-            <li><strong>Instant Client-Side Search:</strong> Keyboard shortcut <code className="text-xs font-mono">Ctrl+K</code> or <code className="text-xs font-mono">/</code> with real-time matching.</li>
+            <li><strong>桌面端多栏自适应布局：</strong>经典固定侧边栏导航 + 核心阅读流 + 右侧粘性文章目录 (TOC)。</li>
+            <li><strong>Jekyll Frontmatter 无缝兼容：</strong>原生支持带有 YAML 头部信息的标准 Jekyll Markdown 文章读取与导出。</li>
+            <li><strong>Chirpy 专属引用提示框：</strong>完整支持 <code className="text-xs font-mono">&gt; [!NOTE]</code>、<code className="text-xs font-mono">&gt; [!TIP]</code>、<code className="text-xs font-mono">&gt; [!WARNING]</code> 与 <code className="text-xs font-mono">&gt; [!DANGER]</code> 语法。</li>
+            <li><strong>深色/浅色沉浸式主题切换：</strong>支持一键切换并记忆系统/用户偏好模式，采用舒适的高对比度 Slate 配色。</li>
+            <li><strong>全局即时键盘快捷搜索：</strong>支持快捷键 <code className="text-xs font-mono">Ctrl+K</code> 或 <code className="text-xs font-mono">/</code> 快速唤起并实时搜索。</li>
           </ul>
         </div>
 
         {/* Reset Demo Data */}
         <div className="pt-4 border-t border-slate-200 dark:border-zinc-800 flex justify-between items-center text-xs text-slate-400 dark:text-zinc-500">
-          <span>Need to restore default demo articles and settings?</span>
+          <span>需要重新载入默认示例文章与初始配置？</span>
           <button
             id="reset-demo-btn"
             onClick={resetToDemoData}
             className="text-cyan-600 dark:text-cyan-400 hover:underline cursor-pointer"
           >
-            Reset Demo Data
+            重置示例数据
           </button>
         </div>
       </div>

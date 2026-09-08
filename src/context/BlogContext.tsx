@@ -44,9 +44,17 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return 'dark';
   });
 
-  // Data states
+  // Data states with version check for Chinese localization
+  const STORAGE_VERSION = 'chirpy_zh_v2';
+
   const [posts, setPosts] = useState<Post[]>(() => {
     try {
+      const version = localStorage.getItem('chirpy_storage_version');
+      if (version !== STORAGE_VERSION) {
+        localStorage.setItem('chirpy_storage_version', STORAGE_VERSION);
+        localStorage.setItem('chirpy_posts', JSON.stringify(INITIAL_POSTS));
+        return INITIAL_POSTS;
+      }
       const saved = localStorage.getItem('chirpy_posts');
       return saved ? JSON.parse(saved) : INITIAL_POSTS;
     } catch {
@@ -56,6 +64,11 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [profile, setProfile] = useState<BlogProfile>(() => {
     try {
+      const version = localStorage.getItem('chirpy_storage_version');
+      if (version !== STORAGE_VERSION) {
+        localStorage.setItem('chirpy_profile', JSON.stringify(INITIAL_PROFILE));
+        return INITIAL_PROFILE;
+      }
       const saved = localStorage.getItem('chirpy_profile');
       return saved ? JSON.parse(saved) : INITIAL_PROFILE;
     } catch {
@@ -65,6 +78,11 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [comments, setComments] = useState<Comment[]>(() => {
     try {
+      const version = localStorage.getItem('chirpy_storage_version');
+      if (version !== STORAGE_VERSION) {
+        localStorage.setItem('chirpy_comments', JSON.stringify(INITIAL_COMMENTS));
+        return INITIAL_COMMENTS;
+      }
       const saved = localStorage.getItem('chirpy_comments');
       return saved ? JSON.parse(saved) : INITIAL_COMMENTS;
     } catch {
@@ -181,18 +199,18 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
       );
     } else {
       // Create new post
-      const title = postData.title || 'Untitled Post';
-      const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      const title = postData.title || '无标题文章';
+      const slug = title.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/g, '-').replace(/(^-|-$)/g, '');
       const newPost: Post = {
         id: `post-${Date.now()}`,
         slug: slug || `post-${Date.now()}`,
         title,
         subtitle: postData.subtitle || '',
         date: new Date().toISOString().split('T')[0],
-        categories: postData.categories && postData.categories.length > 0 ? postData.categories : ['General'],
-        tags: postData.tags || ['blog'],
-        description: postData.description || (postData.content ? postData.content.slice(0, 150) + '...' : ''),
-        content: postData.content || '# ' + title + '\n\nWrite your content here...',
+        categories: postData.categories && postData.categories.length > 0 ? postData.categories : ['随笔'],
+        tags: postData.tags && postData.tags.length > 0 ? postData.tags : ['博客'],
+        description: postData.description || (postData.content ? postData.content.replace(/[#*`>]/g, '').slice(0, 150).trim() + '...' : ''),
+        content: postData.content || '# ' + title + '\n\n在此开始撰写您的 Markdown 内容...',
         coverImage: postData.coverImage || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
         coverAlt: title,
         pin: postData.pin || false,
@@ -304,6 +322,7 @@ export const useBlog = () => {
 
 function calculateReadingTime(text: string): number {
   if (!text) return 1;
-  const words = text.trim().split(/\s+/).length;
-  return Math.max(1, Math.ceil(words / 220));
+  const cnChars = (text.match(/[\u4e00-\u9fa5]/g) || []).length;
+  const enWords = text.replace(/[\u4e00-\u9fa5]/g, ' ').trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil((cnChars + enWords) / 300));
 }

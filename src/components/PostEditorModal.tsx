@@ -34,24 +34,24 @@ export const PostEditorModal: React.FC = () => {
       // Default template for a new Chirpy post
       setTitle('');
       setSubtitle('');
-      setCategoriesInput('Technology, Web');
-      setTagsInput('chirpy, blog, dev');
+      setCategoriesInput('技术前沿, 前端开发');
+      setTagsInput('chirpy, 博客, 架构');
       setDescription('');
-      setContent(`# Hello Chirpy Blog
+      setContent(`# 欢迎使用 Chirpy 博客写作
 
-Write your post introduction here.
+在这里输入文章引言或导语。
 
 ---
 
-## 1. First Section
+## 一、核心思考
 
-Explore concepts with clean Markdown.
+使用简洁纯粹的 Markdown 记录你的技术深度思考。
 
 > [!TIP]
-> Use Chirpy callout prompts like \`> [!TIP]\`, \`> [!NOTE]\`, or \`> [!WARNING]\`!
+> 支持使用 Chirpy 风格的提示引用块，如 \`> [!TIP]\`、\`> [!NOTE]\` 或 \`> [!WARNING]\`！
 
 \`\`\`typescript
-const greeting = "Hello, World!";
+const greeting = "你好，世界！";
 console.log(greeting);
 \`\`\`
 `);
@@ -79,8 +79,8 @@ console.log(greeting);
     savePost({
       title: title.trim(),
       subtitle: subtitle.trim(),
-      categories: categories.length > 0 ? categories : ['General'],
-      tags: tags.length > 0 ? tags : ['blog'],
+      categories: categories.length > 0 ? categories : ['综合技术'],
+      tags: tags.length > 0 ? tags : ['博客'],
       description: description.trim() || content.slice(0, 150) + '...',
       content,
       coverImage: coverImage.trim() || undefined,
@@ -103,7 +103,7 @@ console.log(greeting);
           <div className="flex items-center gap-2">
             <Edit3 className="w-4 h-4 text-cyan-500" />
             <h3 className="text-sm font-bold text-slate-800 dark:text-zinc-200">
-              {editingPost ? 'Edit Post' : 'Create New Chirpy Post'}
+              {editingPost ? '编辑博文' : '撰写新博文 (Chirpy 规范)'}
             </h3>
           </div>
 
@@ -121,7 +121,7 @@ console.log(greeting);
               >
                 <span className="flex items-center gap-1.5">
                   <Edit3 className="w-3 h-3" />
-                  Write
+                  编辑
                 </span>
               </button>
               <button
@@ -135,7 +135,7 @@ console.log(greeting);
               >
                 <span className="flex items-center gap-1.5">
                   <Eye className="w-3 h-3" />
-                  Preview
+                  预览
                 </span>
               </button>
             </div>
@@ -158,7 +158,7 @@ console.log(greeting);
                 <input
                   type="text"
                   id="post-title-input"
-                  placeholder="Post Title (e.g., Getting Started with Chirpy)"
+                  placeholder="文章标题 (例如：深入解析现代分布式存储体系架构)"
                   value={title}
                   onChange={e => setTitle(e.target.value)}
                   required
@@ -175,7 +175,7 @@ console.log(greeting);
                   className="rounded text-cyan-600 focus:ring-cyan-500 w-4 h-4"
                 />
                 <Pin className="w-3.5 h-3.5 text-amber-500 rotate-45" />
-                <span>Pin to top</span>
+                <span>置顶推荐</span>
               </label>
             </div>
 
@@ -183,7 +183,7 @@ console.log(greeting);
             <input
               type="text"
               id="post-subtitle-input"
-              placeholder="Subtitle (optional summary headline)"
+              placeholder="副标题 (可选，简要阐述文章核心提要)"
               value={subtitle}
               onChange={e => setSubtitle(e.target.value)}
               className="w-full text-xs sm:text-sm px-3.5 py-2 rounded-lg border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 placeholder:text-slate-400 dark:placeholder:text-zinc-500 focus:outline-none focus:border-cyan-500"
@@ -193,14 +193,14 @@ console.log(greeting);
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
                 <label className="block text-[11px] font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
-                  Categories (comma-separated)
+                  分类目录 (逗号分隔)
                 </label>
                 <div className="relative">
                   <Folder className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
                   <input
                     type="text"
                     id="post-categories-input"
-                    placeholder="Blogging, Tutorial"
+                    placeholder="架构设计, 云原生"
                     value={categoriesInput}
                     onChange={e => setCategoriesInput(e.target.value)}
                     className="w-full text-xs pl-8 pr-3 py-2 rounded-lg border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 focus:outline-none focus:border-cyan-500"
@@ -210,14 +210,14 @@ console.log(greeting);
 
               <div>
                 <label className="block text-[11px] font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
-                  Tags (comma-separated)
+                  文章标签 (逗号分隔)
                 </label>
                 <div className="relative">
                   <Tag className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
                   <input
                     type="text"
                     id="post-tags-input"
-                    placeholder="jekyll, chirpy, webdev"
+                    placeholder="react, typescript, 性能优化"
                     value={tagsInput}
                     onChange={e => setTagsInput(e.target.value)}
                     className="w-full text-xs pl-8 pr-3 py-2 rounded-lg border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 focus:outline-none focus:border-cyan-500"
@@ -227,7 +227,7 @@ console.log(greeting);
 
               <div>
                 <label className="block text-[11px] font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
-                  Cover Image URL
+                  封面图 URL (可选)
                 </label>
                 <div className="relative">
                   <Image className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
@@ -247,21 +247,21 @@ console.log(greeting);
             {activeTab === 'write' ? (
               <div className="flex flex-col h-[320px] sm:h-[380px]">
                 <div className="flex items-center justify-between text-xs text-slate-400 dark:text-zinc-500 pb-1.5">
-                  <span className="font-mono">Markdown Content (GFM syntax supported)</span>
-                  <span className="text-[11px]">Tip: Use &gt; [!NOTE] or &gt; [!TIP] for callouts</span>
+                  <span className="font-mono">Markdown 正文内容 (支持 GFM 规范语法)</span>
+                  <span className="text-[11px]">提示：使用 &gt; [!NOTE] 或 &gt; [!TIP] 插入高亮提示框</span>
                 </div>
                 <textarea
                   id="post-content-textarea"
                   value={content}
                   onChange={e => setContent(e.target.value)}
-                  placeholder="Write your article using Markdown..."
+                  placeholder="使用 Markdown 语法书写你的博文..."
                   className="flex-1 w-full p-4 font-mono text-xs sm:text-sm rounded-lg border border-slate-200 dark:border-zinc-700 bg-white dark:bg-[#1b1b1e] text-slate-800 dark:text-zinc-200 focus:outline-none focus:border-cyan-500 resize-none leading-relaxed"
                 />
               </div>
             ) : (
               <div className="h-[320px] sm:h-[380px] overflow-y-auto p-6 rounded-lg border border-slate-200 dark:border-zinc-700 bg-white dark:bg-[#1b1b1e]">
                 <h1 className="text-2xl font-bold text-slate-900 dark:text-zinc-100 mb-2">
-                  {title || 'Untitled Post'}
+                  {title || '无标题文章'}
                 </h1>
                 {subtitle && (
                   <p className="text-sm text-slate-600 dark:text-zinc-400 mb-6 italic">
@@ -276,7 +276,7 @@ console.log(greeting);
           {/* Editor Footer */}
           <div className="px-5 py-3.5 border-t border-slate-200 dark:border-zinc-800 flex items-center justify-between bg-slate-50 dark:bg-zinc-900/50">
             <span className="text-xs text-slate-400 dark:text-zinc-500">
-              Auto-calculates reading time and word count
+              保存时将自动按中文字符精准计算字数与预计阅读时间
             </span>
 
             <div className="flex items-center gap-3">
@@ -285,7 +285,7 @@ console.log(greeting);
                 onClick={() => setIsEditorOpen(false)}
                 className="px-3.5 py-1.5 rounded-lg border border-slate-200 dark:border-zinc-700 text-xs font-medium text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 cursor-pointer"
               >
-                Cancel
+                取消
               </button>
               <button
                 type="submit"
@@ -293,7 +293,7 @@ console.log(greeting);
                 className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold transition-colors cursor-pointer"
               >
                 <Save className="w-3.5 h-3.5" />
-                <span>{editingPost ? 'Update Post' : 'Publish Post'}</span>
+                <span>{editingPost ? '更新文章' : '立即发布'}</span>
               </button>
             </div>
           </div>

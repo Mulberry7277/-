@@ -8,7 +8,7 @@ export const ArchivesView: React.FC = () => {
   // Group posts by Year
   const yearMap: Record<string, typeof posts> = {};
   posts.forEach(post => {
-    const year = post.date.split('-')[0] || 'Earlier';
+    const year = post.date.split('-')[0] || '更早';
     if (!yearMap[year]) yearMap[year] = [];
     yearMap[year].push(post);
   });
@@ -20,14 +20,14 @@ export const ArchivesView: React.FC = () => {
       <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-zinc-800">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-zinc-100 tracking-tight">
-            Archives
+            时间归档
           </h2>
           <p className="text-xs text-slate-500 dark:text-zinc-400 mt-1">
-            Chronological timeline of all published essays & logs
+            所有已发布技术文章与随笔的时间脉络
           </p>
         </div>
         <span className="text-xs px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 font-mono">
-          Total {posts.length} articles
+          共计 {posts.length} 篇文章
         </span>
       </div>
 
@@ -39,10 +39,10 @@ export const ArchivesView: React.FC = () => {
               {/* Year Header */}
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-2xl font-black text-slate-900 dark:text-zinc-100 font-mono tracking-tight">
-                  {year}
+                  {year} 年
                 </span>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-mono font-medium">
-                  {yearPosts.length} posts
+                  {yearPosts.length} 篇
                 </span>
                 <div className="flex-1 h-px bg-slate-200 dark:border-zinc-800" />
               </div>

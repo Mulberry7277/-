@@ -24,11 +24,11 @@ export const Sidebar: React.FC = () => {
   const allTags = new Set(posts.flatMap(p => p.tags));
 
   const navItems: { tab: ActiveTab; label: string; icon: React.ReactNode; count?: number }[] = [
-    { tab: 'home', label: 'HOME', icon: <Home className="w-4 h-4" /> },
-    { tab: 'categories', label: 'CATEGORIES', icon: <FolderTree className="w-4 h-4" />, count: allCategories.size },
-    { tab: 'tags', label: 'TAGS', icon: <Tags className="w-4 h-4" />, count: allTags.size },
-    { tab: 'archives', label: 'ARCHIVES', icon: <Archive className="w-4 h-4" />, count: posts.length },
-    { tab: 'about', label: 'ABOUT', icon: <User className="w-4 h-4" /> },
+    { tab: 'home', label: '首页', icon: <Home className="w-4 h-4" /> },
+    { tab: 'categories', label: '分类', icon: <FolderTree className="w-4 h-4" />, count: allCategories.size },
+    { tab: 'tags', label: '标签', icon: <Tags className="w-4 h-4" />, count: allTags.size },
+    { tab: 'archives', label: '归档', icon: <Archive className="w-4 h-4" />, count: posts.length },
+    { tab: 'about', label: '关于', icon: <User className="w-4 h-4" /> },
   ];
 
   const sidebarContent = (
@@ -82,7 +82,7 @@ export const Sidebar: React.FC = () => {
           className="mt-4 flex items-center gap-1.5 px-4 py-2 w-full max-w-[200px] justify-center rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
         >
           <PlusCircle className="w-3.5 h-3.5" />
-          <span>New Post</span>
+          <span>写文章</span>
         </button>
       </div>
 
@@ -146,14 +146,14 @@ export const Sidebar: React.FC = () => {
           <a
             href={`mailto:${profile.email}`}
             className="p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-zinc-100 transition-colors"
-            title="Email"
+            title="发送邮件"
           >
             <Mail className="w-4 h-4" />
           </a>
           <button
             onClick={() => navigateTo('archives')}
             className="p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-zinc-100 transition-colors cursor-pointer"
-            title="Feed / Archives"
+            title="文章归档"
           >
             <Rss className="w-4 h-4" />
           </button>
@@ -166,15 +166,15 @@ export const Sidebar: React.FC = () => {
             id="theme-toggle-btn"
             onClick={toggleTheme}
             className="flex items-center gap-1.5 p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-zinc-800 text-slate-600 dark:text-zinc-300 transition-colors cursor-pointer"
-            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
+            title={`切换为${theme === 'dark' ? '浅色' : '深色'}模式`}
           >
             {theme === 'dark' ? (
               <Sun className="w-4 h-4 text-amber-400" />
             ) : (
               <Moon className="w-4 h-4 text-cyan-600" />
             )}
-            <span className="text-[11px] uppercase font-semibold">
-              {theme === 'dark' ? 'Light' : 'Dark'}
+            <span className="text-[11px] font-semibold">
+              {theme === 'dark' ? '浅色' : '深色'}
             </span>
           </button>
         </div>

@@ -21,7 +21,7 @@ export const TopBar: React.FC = () => {
             onClick={() => navigateTo('home')} 
             className="hover:text-cyan-500 transition-colors cursor-pointer"
           >
-            Home
+            首页
           </button>
           <span>/</span>
           {selectedPost.categories?.[0] && (
@@ -43,16 +43,16 @@ export const TopBar: React.FC = () => {
     }
 
     const titles: Record<string, string> = {
-      home: 'Recent Posts',
-      categories: 'Categories',
-      tags: 'Tags',
-      archives: 'Archives',
-      about: 'About Me',
+      home: '最新文章',
+      categories: '分类目录',
+      tags: '标签索引',
+      archives: '时间归档',
+      about: '关于博主',
     };
 
     return (
       <div className="flex items-center gap-2">
-        <span className="text-sm font-bold text-slate-800 dark:text-zinc-200 capitalize">
+        <span className="text-sm font-bold text-slate-800 dark:text-zinc-200">
           {titles[activeTab] || activeTab}
         </span>
       </div>
@@ -67,7 +67,7 @@ export const TopBar: React.FC = () => {
           id="mobile-menu-toggle"
           onClick={() => setIsMobileSidebarOpen(true)}
           className="md:hidden p-1.5 rounded-lg text-slate-600 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
-          aria-label="Toggle menu"
+          aria-label="切换侧边栏"
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -84,10 +84,10 @@ export const TopBar: React.FC = () => {
           id="search-trigger-btn"
           onClick={() => setIsSearchOpen(true)}
           className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-zinc-800/80 border border-slate-200 dark:border-zinc-700/80 text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100 hover:border-cyan-500/50 transition-all text-xs cursor-pointer group"
-          title="Search articles (Ctrl+K or /)"
+          title="搜索文章 (Ctrl+K 或 /)"
         >
           <Search className="w-3.5 h-3.5 group-hover:text-cyan-500 transition-colors" />
-          <span className="hidden sm:inline">Search posts...</span>
+          <span className="hidden sm:inline">搜索文章...</span>
           <kbd className="hidden sm:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-white dark:bg-zinc-700 border border-slate-200 dark:border-zinc-600 text-[10px] font-mono text-slate-400 dark:text-zinc-400">
             <Command className="w-2.5 h-2.5" /> K
           </kbd>
@@ -100,7 +100,7 @@ export const TopBar: React.FC = () => {
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
         >
           <Plus className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Write</span>
+          <span className="hidden sm:inline">写文章</span>
         </button>
       </div>
     </header>
