@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Calendar, Clock, Eye, Folder, Tag, Share2, Edit3, Trash2, Pin, 
+  Calendar, Folder, Tag, Share2, Edit3, Trash2, Pin, 
   ArrowLeft, ArrowRight, MessageSquare, Send, Check, Sparkles, ExternalLink, Bookmark
 } from 'lucide-react';
 import { Post } from '../types';
@@ -62,10 +62,6 @@ export const PostView: React.FC<PostViewProps> = ({ post }) => {
     addComment(post.id, authorName, commentText);
     setCommentText('');
   };
-
-  const cnChars = post.content ? (post.content.match(/[\u4e00-\u9fa5]/g) || []).length : 0;
-  const enWords = post.content ? post.content.replace(/[\u4e00-\u9fa5]/g, ' ').trim().split(/\s+/).filter(Boolean).length : 0;
-  const wordCount = cnChars + enWords;
 
   // Export Jekyll Markdown Frontmatter
   const handleExportMarkdown = () => {
@@ -141,22 +137,6 @@ ${post.content}`;
           {post.lastModified && (
             <div className="flex items-center gap-1.5 text-slate-400 dark:text-zinc-500">
               <span>(更新于 {post.lastModified})</span>
-            </div>
-          )}
-
-          <div className="flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5 text-cyan-500" />
-            <span>{post.readingTime || 5} 分钟阅读</span>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <span>{wordCount} 字</span>
-          </div>
-
-          {post.views !== undefined && (
-            <div className="flex items-center gap-1.5">
-              <Eye className="w-3.5 h-3.5 text-cyan-500" />
-              <span>{post.views} 次浏览</span>
             </div>
           )}
 
@@ -367,8 +347,6 @@ ${post.content}`;
                   </h4>
                   <div className="flex items-center gap-2 mt-2 text-xs text-slate-400 dark:text-zinc-500">
                     <span>{rel.date}</span>
-                    <span>•</span>
-                    <span>{rel.readingTime || 5} 分钟阅读</span>
                   </div>
                 </div>
               ))}

@@ -45,7 +45,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
   });
 
   // Data states with version check for Chinese localization
-  const STORAGE_VERSION = 'chirpy_zh_v2';
+  const STORAGE_VERSION = 'chirpy_zh_v4';
 
   const [posts, setPosts] = useState<Post[]>(() => {
     try {

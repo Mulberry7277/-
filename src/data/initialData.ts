@@ -14,345 +14,173 @@ export const INITIAL_PROFILE: BlogProfile = {
 
 export const INITIAL_POSTS: Post[] = [
   {
-    id: 'chirpy-theme-guide',
-    slug: 'getting-started-with-chirpy-theme',
-    title: 'Jekyll Chirpy 深度上手指南：主题架构、排版规范与 Markdown 艺术',
-    subtitle: '如何借助 Chirpy 极简美学打造优雅、极致飞速的个人技术独立博客。',
-    date: '2025-02-18',
-    lastModified: '2025-02-20',
-    categories: ['博客搭建', 'Jekyll'],
-    tags: ['chirpy', '教程', 'github-pages', 'markdown', '前端'],
-    description: '深入探索经典 Jekyll Chirpy 主题的核心特色：响应式双栏布局、实时滚动文章大纲（TOC）、代码高亮与一键复制、提示卡片（Callouts）及深浅色模式切换。',
+    id: 'common-file-formats-guide',
+    slug: 'common-file-formats-and-web-basics',
+    title: '小白也能懂的常见文件格式全解：从万物起源到数字时代的演进逻辑',
+    subtitle: '纯文本、排版文档、数据交换、图像算法、万维网三剑客与音视频容器深度剖析。',
+    date: '2026-09-08',
+    lastModified: '2026-09-08',
+    categories: ['计算机基础', '技术科普'],
+    tags: ['文件格式', '新手指南', '计算机科普', 'Markdown', '底层原理'],
+    description: '通俗易懂地梳理 .txt、.docx、.pdf、.md、.csv、.json、.svg、HTML/CSS/JS、.mp4 及 .zip 等常见格式的诞生背景与演进逻辑，帮助小白解决可能遇见的任何基础认知疑惑。',
     pin: true,
-    views: 1420,
-    readingTime: 6,
-    coverImage: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
-    coverAlt: 'Chirpy 主题工作台',
-    content: `# Jekyll Chirpy 深度上手指南
-
-**Jekyll Theme Chirpy**（由 [Cotes Chung](https://github.com/cotes2020/jekyll-theme-chirpy) 倾力开源）因其极致干净的版面、惊艳的深色模式（Dark Mode）、极速的加载性能以及优雅的排版层次，在开发者群体中广受推崇。
-
-本文将深入拆解 Chirpy 的设计哲学，展示如何将标准 Markdown 渲染成杂志级的高品质技术阅读体验。
-
----
-
-## 1. 核心设计哲学
-
-Chirpy 强调**内容为王**，杜绝任何喧宾夺主的视觉干扰：
-
-- **常驻左侧导航栏：** 集中展示博主头像、个人简介、导航入口（首页、分类、标签、归档、关于）及社交网络矩阵。
-- **右侧动态文章大纲（TOC）：** 在桌面屏幕上，系统会自动解析文章中的 Markdown 标题，并随着页面滚动实时高亮当前阅读进度。
-- **高对比度双色模式：** 专为夜间编程调配的高级炭黑灰色调，搭配清爽的青色（Cyan/Teal）作为交互强调色。
-- **醒目的提示引用框（Callouts）：** 用于突出显示小技巧、重要提示、警告与风险警告。
-
-> [!TIP]
-> Chirpy 具备无缝的自适应能力。在移动设备屏幕上，侧边栏会自动折叠为平滑抽屉菜单，文章大纲也会自适应优化。
-
----
-
-## 2. 交互式提示卡片（Callout Prompts）
-
-Chirpy 原生支持独特的引用块语法，让重点内容一目了然：
-
-> [!NOTE]
-> 这是一个常规提示框。常用于提供背景知识、补充说明或延伸阅读链接。
-
-> [!TIP]
-> 记得善用置顶（Pin）功能！置顶的文章会常驻在首页列表顶部，并带有专属图钉徽标。
-
-> [!WARNING]
-> 请格外注意 YAML Frontmatter 中的缩进与空格。一个不规范的空格可能会导致 Jekyll 解析失败。
-
-> [!DANGER]
-> 切勿将未加密的生产环境私钥、数据库凭证或 API 密钥提交至公共代码仓库中！
-
----
-
-## 3. 代码高亮与一键复制代码块
-
-Chirpy 提供清晰的代码等宽字体排版，并原生内置语言徽标与一键复制功能：
-
-\`\`\`typescript
-interface PostConfig {
-  title: string;
-  date: string;
-  categories: string[];
-  tags: string[];
-  pin?: boolean;
-}
-
-// 自动计算中文阅读时长与字数
-export function calculateReadingTime(text: string): number {
-  const cnChars = (text.match(/[\\u4e00-\\u9fa5]/g) || []).length;
-  const enWords = text.replace(/[\\u4e00-\\u9fa5]/g, ' ').trim().split(/\\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil((cnChars + enWords) / 300));
-}
-\`\`\`
-
-命令行执行代码块也非常直观：
-
-\`\`\`bash
-# 克隆 Chirpy 主题启动脚手架
-git clone https://github.com/cotes2020/chirpy-starter.git my-blog
-
-# 安装依赖并启动本地预览服务器
-bundle install
-bundle exec jekyll serve
-\`\`\`
-
----
-
-## 4. 表格与任务复选清单
-
-支持标准 GFM 扩展语法，包含响应式表格与交互清单：
-
-| 核心特性 | Chirpy 主题 | 原生 Jekyll |
-| :--- | :--- | :--- |
-| **深浅色主题** | 原生无缝切换 & 系统跟随 | 需手动编写 CSS |
-| **文章目录 (TOC)** | 动态滚动监听 (Scrollspy) | 需额外插件支持 |
-| **全站全文检索** | 纯客户端毫秒级检索 | 需第三方服务托管 |
-| **PWA 离线支持** | 开箱即用离线缓存 | 无 |
-
-### 本博客已就绪的配置清单：
-
-- [x] 配置个人头像、博主昵称与个性签名
-- [x] 设定常用社交媒体账号链接（GitHub、Twitter、Email）
-- [x] 在本地撰写第一篇并使用一键同步导入
-- [x] 享受沉浸式 Markdown 纯净技术写作
-- [ ] 开启你的下一篇深度技术长文！
-
----
-
-## 5. 结语
-
-无论是记录计算机科学探索笔记、架构设计心得还是个人技术随笔，Chirpy 的极简美学都能带给你最舒适的创作体验。现在就去右上角点击 **「写文章」** 或 **「本地同步」** 试试吧！
-`
-  },
-  {
-    id: 'react-19-performance',
-    slug: 'react-19-web-performance-patterns',
-    title: '2025 现代前端工程：React 19、React Compiler 与微优化实战',
-    subtitle: '深度解析 Actions、useTransition、自动记忆化编译与 Web 核心指标调优。',
-    date: '2025-02-12',
-    categories: ['前端开发', 'React'],
-    tags: ['react', 'javascript', '性能优化', '前端工程'],
-    description: 'React 19 如何彻底摆脱繁冗的 useMemo/useCallback 手动优化心智负担，并将异步 UI 状态提升为第一等公民。',
-    pin: true,
-    views: 980,
-    readingTime: 5,
-    coverImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1200&q=80',
-    coverAlt: 'React 19 架构全景',
-    content: `# 2025 现代前端工程：React 19 与性能革新
-
-React 19 的发布，标志着前端响应式数据流、异步状态处理与渲染性能优化迈入了全新的纪元。
-
----
-
-## 1. 告别手动优化的 React Compiler
-
-多年来，React 开发者不得不花费大量心力在 \`useCallback\` 与 \`useMemo\` 上，以避免子组件因引用改变而发生无谓重渲染：
-
-\`\`\`tsx
-// React 19 之前的繁琐手动优化写法
-const memoizedList = useMemo(() => {
-  return rawItems.filter(item => item.isActive).sort((a, b) => b.score - a.score);
-}, [rawItems]);
-
-const handleSelect = useCallback((id: string) => {
-  setSelectedId(id);
-}, []);
-\`\`\`
-
-而在配合 **React Compiler** 后，记忆化将在编译期自动完成：
-- 零依赖项数组维护心智负担
-- 极细粒度的组件树重渲染控制
-- 代码还原为最纯粹、最优雅的 JavaScript 表达
-
----
-
-## 2. 原生 Actions 与异步过渡状态
-
-React 19 正式引入了 **Actions** 概念，大幅简化了表单提交、乐观更新（Optimistic Updates）与后台数据突变：
-
-\`\`\`tsx
-import { useTransition, useState } from 'react';
-
-function LikeButton({ postId, initialLikes }: { postId: string; initialLikes: number }) {
-  const [isPending, startTransition] = useTransition();
-  const [likes, setLikes] = useState(initialLikes);
-
-  const handleLike = () => {
-    startTransition(async () => {
-      // 乐观更新界面数值
-      setLikes(prev => prev + 1);
-      await api.likePost(postId);
-    });
-  };
-
-  return (
-    <button onClick={handleLike} disabled={isPending} className="btn-accent">
-      {isPending ? '同步中...' : \`❤️ \${likes}\`}
-    </button>
-  );
-}
-\`\`\`
-
-> [!NOTE]
-> 结合全新的 \`useActionState\` 钩子，无需引入第三方状态库，即可原生优雅地处理 pending 加载中、成功回执及表单验证错误反馈。
-
----
-
-## 3. Web 性能指标（Core Web Vitals）实战建议
-
-在调优现代 Web 网页时：
-1. **控制 INP（Interaction to Next Paint）在 200ms 以内**：善用非阻塞的过渡更新。
-2. **字体与核心样式内联**：预先建立对字体 CDN 域名的 DNS 预连接。
-3. **图像格式现代化**：优先采用 AVIF 或 WebP 格式，避免未经压缩的大图阻塞关键渲染路径。
-`
-  },
-  {
-    id: 'ai-coding-agents-architecture',
-    slug: 'building-autonomous-ai-coding-agents',
-    title: '构建自主编程智能体 (Coding Agents)：上下文管理、工具调度与自愈闭环',
-    subtitle: '从 Prompt 工程到确定性工具执行、精确子串补丁与代码自愈编译器。',
-    date: '2025-01-28',
-    categories: ['人工智能', '系统架构'],
-    tags: ['ai', '大语言模型', '智能体', 'typescript', '架构设计'],
-    description: '现代 Agent 系统如何协调文件系统、语言模型上下文窗口与即时诊断验证闭环的深度工程架构剖析。',
-    pin: false,
-    views: 1845,
-    readingTime: 7,
-    coverImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-    coverAlt: 'AI Agent 架构网络',
-    content: `# 构建自主编程智能体：架构、闭环与工具调度
-
-Agentic AI（智能体）系统正在从前期的对话 Demo 进化为真正能够交付端到端工程结果的自动化系统。与传统一次性文本补全不同，现代编程智能体具备环境感知能力与确定性执行能力。
-
----
-
-## 1. 核心控制循环：ReAct 与工具派发
-
-一个高鲁棒性的智能体持续运行在一个闭环控制循环中：
-1. **感知（Perceive）：** 观察当前环境状态（目标文件内容、文件目录树、构建报错日志）。
-2. **推理（Reason）：** 明确下一步目标，选择对应的函数工具（Tool）。
-3. **行动（Act）：** 通过结构化参数调用确定性工具（读文件、精准补丁替换、执行诊断）。
-4. **验证（Verify）：** 即时校验修改结果（运行 TypeScript 诊断或测试用例）。
-
-\`\`\`
-   ┌──────────────┐
-   │  环境真实状态  │
-   └──────┬───────┘
-          │ (环境观察)
-          ▼
-   ┌──────────────┐       ┌──────────────┐
-   │ 大语言模型核心 ├──────►│  工具调度中心 │
-   └──────┬───────┘       └──────┬───────┘
-          ▲                      │ (执行修改)
-          │                      ▼
-          └───────(编译/诊断反馈)─┘
-\`\`\`
-
----
-
-## 2. 精确子串替换与抗幻觉机制
-
-在自动化代码重构中，大模型经常产生“行号幻觉”。为确保修改的准确性，业界顶尖智能体普遍采用**确定性子串精准匹配替换（Exact Substring Replacement）**：
-
-\`\`\`typescript
-interface FileEditTool {
-  filePath: string;
-  targetContent: string;     // 必须在原文件中唯一存在
-  replacementContent: string; // 替换后的全新代码块
-}
-
-function applyEdit(original: string, edit: FileEditTool): string {
-  if (!original.includes(edit.targetContent)) {
-    throw new Error('未在目标文件中找到待替换的目标代码段');
-  }
-  return original.replace(edit.targetContent, edit.replacementContent);
-}
-\`\`\`
-
-> [!TIP]
-> 每次修改代码后立即调用编译校验工具。最强大的智能体往往是能够自主发现并纠正语法错误、自我迭代直至完全通过的自愈系统。
-`
-  },
-  {
-    id: 'developer-productivity-stack-2025',
-    slug: 'developer-productivity-stack-2025',
-    title: '我的 2025 极客开发者环境与生产力工具栈',
-    subtitle: '现代终端工作流、Neovim、Fish Shell、Raycast 与分体人体工学键盘实践。',
-    date: '2025-01-15',
-    categories: ['开发工具', '生产力'],
-    tags: ['开发工具', '终端命令行', '生产力', 'linux'],
-    description: '分享让心流不被打断的高效开发工具、配置哲学与日常习惯，打造纯粹极简的工作环境。',
-    pin: false,
-    views: 650,
-    readingTime: 4,
-    coverImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
-    coverAlt: '极客开发桌面环境',
-    content: `# 我的 2025 极客开发者环境与生产力工作流
-
-一个真正高效的开发环境应当“隐入无形”，让开发者能够毫无阻力地沉浸在解决核心问题的心流之中。
-
----
-
-## 1. 终端与 Shell 生产力基石
-
-- **Ghostty & WezTerm：** 基于 GPU 硬件加速的极致现代化终端，原生支持连字字体（Font Ligatures）与平滑分屏。
-- **Fish Shell & Starship 提示符：** 基于历史命令的高智能自动补全，开箱即用且零启动延迟。
-- **Zoxide：** 智能目录跳转工具，全面替代传统古老的 \`cd\` 命令。
-
-\`\`\`bash
-# 直接智能跳转到活跃项目
-z chirpy-blog
-\`\`\`
-
----
-
-## 2. 键盘布局与窗口管理
-
-使用 36 键分体正交人体工学键盘并配合 Miryoku 布局，手腕无需反复移动即可完成所有快捷键派发。配合全键盘快捷键工具，所有窗口操作均可在毫秒间完成。
-`
-  },
-  {
-    id: 'distributed-systems-raft-consensus',
-    slug: 'distributed-systems-raft-consensus-edge',
-    title: '深入浅出分布式共识算法：Raft 机制、法定人数与边缘缓存一致性',
-    subtitle: '拨开 Leader 选举、日志复制与网络分区脑裂的迷雾。',
-    date: '2024-12-20',
-    categories: ['后端架构', '分布式系统'],
-    tags: ['分布式系统', 'raft', '后端', '系统设计'],
-    description: '用通俗易懂的图解方式理解现代分布式数据库如何在不可靠网络中借助 Raft 协议达成数据最终一致。',
-    pin: false,
-    views: 1120,
-    readingTime: 6,
     coverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
-    coverAlt: '分布式云架构拓扑',
-    content: `# 深入浅出分布式共识算法：Raft 机制与原理解析
+    coverAlt: '数字时代的数据流动与文件格式',
+    content: `# 常见文件格式与互联网基石全解：从万物起源到现代演进逻辑
 
-在跨越多个数据中心的分布式网络中，网络抖动、延迟分片与机器崩溃是不可避免的常态。各个节点如何对数据状态达成不容置疑的统一共识？
+对于刚接触计算机与编程的小白来说，常常会被各种格式后缀搞得眼花缭乱：为什么有了 \`.txt\` 还要 \`.doc\` 和 \`.md\`？为什么有了 \`.jpg\` 还要 \`.png\` 和 \`.svg\`？\`.json\`、\`.yaml\`、\`.mp4\`、\`.zip\` 究竟都在解决什么问题？
 
----
-
-## 1. 分布式系统的核心挑战
-
-在分布式集群中：
-- 节点可能随时宕机或丢包。
-- 网络数据包可能会乱序到达。
-- 绝不允许出现双主冲突（脑裂 / Split-Brain）损坏核心数据。
+本文将带你梳理人类计算机发展史上最核心的文件格式与互联网基石，帮助你彻底理清它们诞生的历史背景与底层演进逻辑。
 
 ---
 
-## 2. Raft 节点的三个关键状态
+## 1. 纯文本与排版文档：从“能看”到“完美排版”
 
-Raft 集群中的所有节点在任一时刻必然处于以下三种状态之一：
-1. **Leader（领导者）：** 处理所有客户端写请求，统一向日志追加并复制给 Follower。
-2. **Follower（追随者）：** 完全被动接收，仅响应来自 Leader 的心跳与 RPC 请求。
-3. **Candidate（候选人）：** 若在随机选举超时内未收到 Leader 心跳，则自增任期并发起选举投票。
+这是人类使用计算机最基础的需求——**记录文字内容**。它的演进逻辑是：
+> 纯文本 -> 复杂控制符 -> 所见即所得 -> 跨平台绝对一致
+
+### .txt (纯文本)：万物起源
+- **历史与逻辑：** 早期计算机只有最简单的字符编码（如 ASCII）。它不包含任何字体、颜色、大小信息，只有纯粹的字符。
+- **核心特点：** 它是最干净的格式，哪怕过了一百年，任何操作系统依然能秒开它。
+
+### .doc -> .docx (Microsoft Word)：商业办公的统治者
+- **历史与逻辑：** 90年代，人们需要给文字加粗、变色。早期的 \`.doc\` 是微软极其封闭的二进制格式，这导致只有装了 Word 的电脑才能完美打开，其他软件一开就乱码。
+- **进化与突破：** 2007年，为了应对开源社区的抗议，微软推出了 \`.docx\`（后缀加了 **x** 代表 **XML**）。这其实是一个重大的历史转折：**.docx 本质上是一个 ZIP 压缩包**。如果你把 \`.docx\` 后缀改成 \`.zip\` 并解压，你会发现里面全是一堆结构化的 \`.xml\` 文件和图片。它变得更开放、更不易彻底损坏了。
+
+> [!TIP]
+> **动手小实验**：试着把任意一个 \`.docx\` 文件重命名为 \`.zip\`，解压后打开 \`word/document.xml\`，你就能亲眼看到用 XML 标签包装的文字原文！
+
+### .pdf (便携式文档格式)：数字时代的“印刷机”
+- **历史与逻辑：** 90年代初，排版工程师极其痛苦：在 Mac 上排好的文档，发到 Windows 电脑上，因为缺少字体或版本不同，版面会全部错乱。Adobe 公司发明了 PDF。
+- **用来干什么：** 它的逻辑不是“排版”，而是**“画画”**。PDF 相当于把文字、字体、图片全部“锁定”在一张虚拟画布上。无论你在手机、平板还是打印机上打开，它**绝对不会变形**。
+
+### .md (Markdown)：程序员的排版反击战
+- **历史与逻辑：** 现代人觉得用 Word 排版太重了（频繁点鼠标调整标题），于是诞生了 Markdown。
+- **核心优势：** 你只需要输入 \`# 标题\` 或者 \`**加粗**\` 这种简单的符号，程序就会自动把它渲染成漂亮的排版。它兼具了 \`.txt\` 的极简和 \`.doc\` 的排版能力。
+
+---
+
+## 2. 数据交换与配置：机器与人类的博弈
+
+计算机程序之间需要传输数据，软件也需要读取配置。它的历史演进逻辑是：
+> 平面数据 -> 臃肿的立体数据 -> 轻量化 -> 人性化
+
+### .csv (逗号分隔值)：上古时代的数据表
+- **历史与逻辑：** 没有 Excel 的时代怎么存表格？用逗号。例如：
+\`\`\`csv
+姓名,年龄,职业
+张三,28,全栈工程师
+李四,24,UI设计师
+\`\`\`
+- **核心特点：** 极其简陋，但所有数据库至今都支持导入导出 CSV，因为它是最不易出错的平面数据格式。
+
+### .xml (可扩展标记语言)：曾经的数据霸主
+- **历史与逻辑：** 90年代末，互联网需要传输复杂结构的数据。XML 引入了标签：
+\`\`\`xml
+<User>
+  <Name>张三</Name>
+  <Age>28</Age>
+</User>
+\`\`\`
+- **痛点：** 它非常严谨，但废话太多（闭合标签占了一半体积），导致网络传输慢。
+
+### .json 与 .yaml：现代互联网的基石
+正如之前所述，**JSON 杀死了 XML**，因为它是去除了标签的“键值对”，解析极快；而 **YAML 为了人类阅读**，又进一步去除了 JSON 的括号与引号，极致清爽：
+
+\`\`\`json
+{
+  "name": "张三",
+  "age": 28,
+  "skills": ["JavaScript", "Python"]
+}
+\`\`\`
+
+与此等价的 YAML 更加优雅清晰：
+
+\`\`\`yaml
+name: 张三
+age: 28
+skills:
+  - JavaScript
+  - Python
+\`\`\`
+
+---
+
+## 3. 图像格式：从“马赛克”到“欺骗人眼的魔法”
+
+图像格式的演化，核心是在解决一个物理难题：**如何在不让人眼察觉的情况下，把文件体积压缩到最小？**
+
+### .bmp (位图)：原始且笨重
+- **历史与逻辑：** Windows 早期格式。它非常死脑筋，图片有 100 万个像素，它就老老实实记录这 100 万个点的颜色信息（不压缩）。文件极大，现在已被淘汰。
+
+### .jpg / .jpeg (联合图像专家小组)：拯救了早期互联网
+- **历史与逻辑：** 如果在 56K 拨号上网时代用 BMP，打开一张图片要十分钟。JPEG 引入了**“有损压缩”**。
+- **核心原理：** 它利用了人类视觉的弱点：**人眼对亮度敏感，对颜色的微小差异不敏感**。它把相近的颜色直接合并抹除，将体积缩小了 90% 以上。
+- **用来干什么：** 适合色彩极其丰富的真实摄影照片。
+
+### .png (便携式网络图形)：为了透明度而生
+- **历史与逻辑：** JPEG 虽然小，但一压缩就模糊，且**不支持“透明背景”**。PNG 使用了“无损压缩”，保留每一滴像素的原始信息，且支持 Alpha 透明通道。
+- **用来干什么：** 适合带透明背景的 Logo、网页图标、UI 界面设计图。
+
+### .svg (可缩放矢量图形)：用数学公式画画
+- **历史与逻辑：** 随着 4K、8K 屏幕出现，PNG 放大后依然会全是马赛克。SVG 改变了逻辑——**它里面存的不是像素，而是几何数学公式**（比如：在坐标(10,10)画一个半径为5的红色圆）：
+\`\`\`xml
+<svg width="100" height="100">
+  <circle cx="50" cy="50" r="40" stroke="#06b6d4" stroke-width="4" fill="transparent" />
+</svg>
+\`\`\`
+- **用来干什么：** 无论放大一万倍还是十万倍，它永远绝对清晰。现代网页的图标几乎全被 SVG 统治。
 
 > [!NOTE]
-> 通过采用随机化选举超时（如 150ms ~ 300ms），绝大多数情况下可以在首轮投票中迅速选出新 Leader，避免选票平分僵局。
+> **选图总结速记**：
+> - 真实照片/壁纸 -> 选 **JPG**
+> - 透明背景/界面截图 -> 选 **PNG**
+> - 网页图标/矢量 Logo -> 选 **SVG**
+
+---
+
+## 4. 万维网三剑客：构建互联网的骨肉皮
+
+网页不是一个单一的文件，它是三种格式相互配合的艺术。
+
+### .html (超文本标记语言)：网页的“骨骼”
+- **历史与逻辑：** 1990年，为了让欧洲核子研究中心（CERN）的科学家方便地互相看论文并点击跳转，蒂姆·伯纳斯·李发明了 HTML。它定义了哪里是标题、哪里是段落、哪里是图片链接。
+
+### .css (层叠样式表)：网页的“皮肤”
+- **作用：** 负责给骨骼穿上衣服（上色、排版、动画），实现内容与样式的解耦。
+
+### .js (JavaScript)：网页的“肌肉与神经”
+- **历史与逻辑：** 早期网页是死气沉沉的报纸，看完只能点链接刷新下一页。网景公司花了 10 天时间写出了 JavaScript，让网页可以在不刷新的情况下，实现弹出窗口、表单验证、以及后来的各种炫酷游戏和实时数据刷新。
+
+---
+
+## 5. 音视频与压缩包：“容器”与“编码”的魔术
+
+最后这部分最容易让人误解，很多人以为 \`.mp4\` 是一种视频格式，其实并非如此。
+
+### .wav (波形音频)：声音的数字标本
+- 微软和 IBM 搞出的未压缩音频，完全还原麦克风捕捉的声波。体积巨大，通常只有专业录音棚在用。
+
+### .mp3 (MPEG-1 Audio Layer 3)：数字音乐革命
+- **历史与逻辑：** 和 JPEG 的逻辑惊人一致。它利用了**“心理声学”**——如果一个大声音和一个小声音同时出现，人耳听不到小声音；人耳也听不到超高频和超低频。MP3 直接把这些数据砍掉，把音频压缩了 10 倍。它直接催生了 iPod 时代。
+
+### .mp4 / .mkv：它们只是“集装箱”
+- **核心逻辑：** 它们被称为**“封装格式”（Container）**。
+- **形象比喻：** 一个 \`.mp4\` 文件就像一个纸箱，里面分别装着：
+  - 一条**视频轨**（通常是 H.264 或 H.265 编码）
+  - 一条或多条**音频轨**（AAC 编码）
+  - 以及**字幕轨**
+- 你把它们打包封在一个盒子里，就成了 \`.mp4\`。
+
+### .zip / .rar (压缩包)：冗余消除器
+- **历史与逻辑：** 计算机文件中有大量重复的废话。比如一个文本里有 1000 个连续的“0”。
+- **底层原理：** 压缩算法（如 ZIP 使用的 Deflate 算法）不会傻傻存 1000 个0，而是记录一句指令：“这里有1000个0”。通过消除冗余信息，文件体积被大幅缩小。ZIP 因为算法免费开源，成为了事实上的全球标准。
+
+---
+
+> [!TIP]
+> 掌握了这些文件格式背后的演进逻辑与设计妥协，未来不论遇到多么复杂的技术名词，你都能一眼看透它的底层本质！
 `
   }
 ];
@@ -360,26 +188,10 @@ Raft 集群中的所有节点在任一时刻必然处于以下三种状态之一
 export const INITIAL_COMMENTS: Comment[] = [
   {
     id: 'c1',
-    postId: 'chirpy-theme-guide',
-    author: '陈立峰 (TechLead)',
+    postId: 'common-file-formats-guide',
+    author: '技术小白 (Learner)',
     avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80',
-    date: '2025-02-19',
-    content: '太喜欢这个主题了！右侧的实时滚动目录大纲与暗黑模式适配得非常舒适，在电脑和大屏平板上阅读长文简直是一种享受。'
-  },
-  {
-    id: 'c2',
-    postId: 'chirpy-theme-guide',
-    author: '林雅婷 (Frontend Dev)',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
-    date: '2025-02-21',
-    content: '那几个提示框（> [!TIP]、> [!NOTE]）的样式细节还原得真棒，Jekyll Chirpy 确实堪称独立技术博客的美学标杆。'
-  },
-  {
-    id: 'c3',
-    postId: 'react-19-performance',
-    author: '张伟 (Senior Architect)',
-    avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=120&q=80',
-    date: '2025-02-14',
-    content: 'React Compiler 确实省去了以前天天纠结 useMemo 依赖项的心智负担，分析得很清晰透彻！'
+    date: '2026-09-08',
+    content: '讲得太通透了！终于彻底明白了为什么 docx 本质是个 zip 包，还有 mp4 为什么只是个集装箱，一口气读完豁然开朗！'
   }
 ];

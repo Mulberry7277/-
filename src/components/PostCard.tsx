@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pin, Calendar, Folder, Tag, Clock, Eye, ChevronRight } from 'lucide-react';
+import { Pin, Calendar, Folder, Tag } from 'lucide-react';
 import { Post } from '../types';
 import { useBlog } from '../context/BlogContext';
 
@@ -59,20 +59,6 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <Folder className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-500" />
             <span>{post.categories.join(' / ')}</span>
           </button>
-        )}
-
-        {/* Reading Time */}
-        <div className="flex items-center gap-1.5">
-          <Clock className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-500" />
-          <span>{post.readingTime || 5} 分钟阅读</span>
-        </div>
-
-        {/* Views */}
-        {post.views !== undefined && (
-          <div className="flex items-center gap-1.5">
-            <Eye className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-500" />
-            <span>{post.views} 次浏览</span>
-          </div>
         )}
 
         {/* Tags */}
